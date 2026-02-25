@@ -1,0 +1,9 @@
+# Windows reserved filename (created by hermesc.cmd workaround)
+nul
+
+# Claude Code local settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
