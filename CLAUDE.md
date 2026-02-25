@@ -1,5 +1,7 @@
 # KccMobile 프로젝트 - Claude Code 공유 컨텍스트
 
+[![Download APK](https://img.shields.io/badge/Download-KccMobile_v1.0.0_APK-34a853?style=for-the-badge&logo=android&logoColor=white)](https://github.com/kccitsales/Channeling_App/raw/main/KccMobile-v1.0.0.apk)
+
 > 이 파일은 여러 Claude Code 세션에서 공유되는 프로젝트 컨텍스트 문서입니다.
 > 모든 세션은 이 파일을 읽고 이전 대화의 연장선에서 작업해야 합니다.
 > **마지막 업데이트: 2026-02-25**
