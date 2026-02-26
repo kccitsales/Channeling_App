@@ -1,6 +1,6 @@
-# KccMobile 프로젝트 - Claude Code 공유 컨텍스트
+# KCC 채널링 앱 - Claude Code 공유 컨텍스트
 
-[![Download APK](https://img.shields.io/badge/Download-KccMobile_v1.0.0_APK-34a853?style=for-the-badge&logo=android&logoColor=white)](https://github.com/kccitsales/Channeling_App/raw/main/KccMobile-v1.0.0.apk)
+[![Download APK](https://img.shields.io/badge/Download-KCC_채널링_v1.0.0_APK-34a853?style=for-the-badge&logo=android&logoColor=white)](https://github.com/kccitsales/Channeling_App/raw/main/KccChanneling-v1.0.0.apk)
 
 > 이 파일은 여러 Claude Code 세션에서 공유되는 프로젝트 컨텍스트 문서입니다.
 > 모든 세션은 이 파일을 읽고 이전 대화의 연장선에서 작업해야 합니다.
@@ -10,9 +10,9 @@
 
 ## 1. 프로젝트 개요
 
-**KccMobile**은 KCC의 기존 웹사이트(WebSquare + Spring Boot)를 React Native WebView 하이브리드 앱으로 감싸는 프로젝트이다. 웹사이트를 WebView로 로드하고, 카메라(사진촬영 + QR스캔), GPS 위치, FCM 푸시 알림 기능을 네이티브로 구현한다.
+**KccChanneling**은 KCC의 기존 웹사이트(WebSquare + Spring Boot)를 React Native WebView 하이브리드 앱으로 감싸는 프로젝트이다. 웹사이트를 WebView로 로드하고, 카메라(사진촬영 + QR스캔), GPS 위치, FCM 푸시 알림 기능을 네이티브로 구현한다.
 
-- **프로젝트 경로**: `D:\kccfw\workspace_channeling\KccMobile`
+- **프로젝트 경로**: `D:\kccfw\workspace_channeling\KccChanneling`
 - **운영 환경**: Windows 11 Pro (개발 머신)
 - **대상 웹 URL**: `https://channeling.kccworld.co.kr/mobile/channeling/views/login/login_login.jsp` (로그인 화면이 시작점)
 - **웹 프레임워크**: WebSquare (인스웨이브 시스템즈) + Spring Boot 백엔드
@@ -57,7 +57,7 @@
 ## 3. 폴더 구조
 
 ```
-KccMobile/
+KccChanneling/
   .env, .env.development, .env.staging, .env.production   # 환경별 WEBVIEW_BASE_URL
   App.tsx                          # → src/App re-export
   index.js                         # 앱 엔트리 + FCM background handler
@@ -90,8 +90,8 @@ KccMobile/
     build.gradle                       # google-services classpath 추가됨
     app/build.gradle                   # google-services + dotenv 플러그인 적용됨
   ios/
-    KccMobile/Info.plist               # 카메라/위치 설명, UIBackgroundModes
-    KccMobile/AppDelegate.swift        # Firebase.configure() + 푸시 설정
+    KccChanneling/Info.plist               # 카메라/위치 설명, UIBackgroundModes
+    KccChanneling/AppDelegate.swift        # Firebase.configure() + 푸시 설정
     Podfile                            # RNPermissions Camera/Location/Notifications pod
 ```
 
@@ -185,11 +185,11 @@ WEBVIEW_BASE_URL=https://channeling.kccworld.co.kr/mobile/channeling/views/deliv
 - `Info.plist`: NSCameraUsageDescription (카메라 설명), NSLocationWhenInUseUsageDescription (위치 설명), UIBackgroundModes (fetch, remote-notification) 추가됨
 - `AppDelegate.swift`: `FirebaseApp.configure()`, `UNUserNotificationCenter`, `MessagingDelegate` 설정됨
 - `Podfile`: `RNPermissions`, `Permission-Camera`, `Permission-LocationWhenInUse`, `Permission-Notifications` pod 추가됨
-- Bundle ID: `org.reactjs.native.example.KccMobile` (Xcode 프로젝트 기본값, 배포 시 변경 필요)
+- Bundle ID: `org.reactjs.native.example.KccChanneling` (Xcode 프로젝트 기본값, 배포 시 변경 필요)
 
 ### 아직 안 된 것 (수동 작업 필요)
 - [ ] Firebase Console에서 프로젝트 생성 → 실제 `google-services.json` 교체 (현재 더미 파일)
-- [ ] `GoogleService-Info.plist` → `ios/KccMobile/` 배치
+- [ ] `GoogleService-Info.plist` → `ios/KccChanneling/` 배치
 - [ ] iOS `pod install` 실행
 - [ ] iOS Bundle ID를 실제 값으로 변경
 - [x] ~~Android 에뮬레이터 빌드~~ → 성공 (2026-02-23)
@@ -335,7 +335,7 @@ WEBVIEW_BASE_URL=https://channeling.kccworld.co.kr/mobile/channeling/views/deliv
 
 ```bash
 # 프로젝트 경로로 이동
-cd "D:\kccfw\workspace_channeling\KccMobile"
+cd "D:\kccfw\workspace_channeling\KccChanneling"
 
 # TypeScript 타입 체크
 npx tsc --noEmit
@@ -344,7 +344,7 @@ npx tsc --noEmit
 npx eslint src/ --ext .ts,.tsx
 
 # Android 빌드 & 에뮬레이터 설치 (Windows - gradlew.bat 직접 실행)
-"D:\kccfw\workspace_channeling\KccMobile\android\gradlew.bat" app:installDebug --project-dir="D:\kccfw\workspace_channeling\KccMobile\android"
+"D:\kccfw\workspace_channeling\KccChanneling\android\gradlew.bat" app:installDebug --project-dir="D:\kccfw\workspace_channeling\KccChanneling\android"
 
 # 에뮬레이터 앱 실행
 "C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe" shell am start -n com.kccmobile/.MainActivity
@@ -359,13 +359,13 @@ npx eslint src/ --ext .ts,.tsx
 npm start
 
 # Android Release AAB 빌드
-"D:\kccfw\workspace_channeling\KccMobile\android\gradlew.bat" app:bundleRelease --project-dir="D:\kccfw\workspace_channeling\KccMobile\android"
+"D:\kccfw\workspace_channeling\KccChanneling\android\gradlew.bat" app:bundleRelease --project-dir="D:\kccfw\workspace_channeling\KccChanneling\android"
 
 # AAB → APK 변환 (실기기용)
-java -jar "D:\kccfw\workspace_channeling\KccMobile\bundletool.jar" build-apks --bundle="D:\kccfw\workspace_channeling\KccMobile\android\app\build\outputs\bundle\release\app-release.aab" --output="D:\kccfw\workspace_channeling\KccMobile\android\app\build\outputs\bundle\release\app-release.apks" --ks="D:\kccfw\workspace_channeling\KccMobile\android\app\kccmobile-release.keystore" --ks-pass=pass:kccmobile2026 --ks-key-alias=kccmobile --key-pass=pass:kccmobile2026 --connected-device --device-id=1891373 --adb="C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe" --overwrite
+java -jar "D:\kccfw\workspace_channeling\KccChanneling\bundletool.jar" build-apks --bundle="D:\kccfw\workspace_channeling\KccChanneling\android\app\build\outputs\bundle\release\app-release.aab" --output="D:\kccfw\workspace_channeling\KccChanneling\android\app\build\outputs\bundle\release\app-release.apks" --ks="D:\kccfw\workspace_channeling\KccChanneling\android\app\kccmobile-release.keystore" --ks-pass=pass:kccmobile2026 --ks-key-alias=kccmobile --key-pass=pass:kccmobile2026 --connected-device --device-id=1891373 --adb="C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe" --overwrite
 
 # Release APK 실기기 설치
-java -jar "D:\kccfw\workspace_channeling\KccMobile\bundletool.jar" install-apks --apks="D:\kccfw\workspace_channeling\KccMobile\android\app\build\outputs\bundle\release\app-release.apks" --device-id=1891373 --adb="C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+java -jar "D:\kccfw\workspace_channeling\KccChanneling\bundletool.jar" install-apks --apks="D:\kccfw\workspace_channeling\KccChanneling\android\app\build\outputs\bundle\release\app-release.apks" --device-id=1891373 --adb="C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe"
 
 # iOS 빌드 & 실행 (Mac에서)
 cd ios && pod install && cd ..

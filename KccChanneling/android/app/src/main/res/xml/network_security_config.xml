@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- kccworld.co.kr: 시스템 CA + 사용자 설치 CA 모두 신뢰 -->
+    <domain-config>
+        <domain includeSubdomains="true">kccworld.co.kr</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    <!-- 기본: 시스템 CA 신뢰 -->
+    <base-config>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
