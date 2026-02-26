@@ -1,6 +1,9 @@
 # Windows reserved filename (created by hermesc.cmd workaround)
 nul
 
+# Claude Code context (duplicated in README.md for GitHub)
+CLAUDE.md
+
 # Claude Code local settings
 .claude/
 
